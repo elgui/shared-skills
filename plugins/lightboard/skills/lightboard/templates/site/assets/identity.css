@@ -1,0 +1,71 @@
+/* cs:default-identity — REPLACE THIS FILE. `Course.ts check` warns while this marker is here.
+ *
+ * {{TITLE}} — identity. Everything here is look; layout lives in the runtime (course.css,
+ * scroll.css). Derive it from the subject's own materials (Identity.md): the instrument's
+ * panel, the tool's screen, the craft's surfaces. The SP-404 course took its tin page from the
+ * sampler's case, its amber from the pad LEDs and its graph paper from the Deluge's grid.
+ *
+ * Required tokens are listed first. Then the two rooms, then the subject's own vocabulary
+ * (key caps, chips, board tiles).
+ */
+
+@font-face {
+  font-family: "Archivo";                 /* placeholder face; choose one for the subject (Identity.md §2) */
+  src: url("fonts/archivo.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+}
+
+:root {
+  --font: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --page: #e9ebe8;
+  --ink: #17191b;
+  --ink-soft: #4b5054;
+  --rule: #c4c8c3;
+  --panel: #1c1f22;           /* dark surfaces: pager, tooltips, widgets */
+  --panel-ink: #eef0ec;
+  --signal: #2f6fd6;          /* THE accent: lit, encore, active step. One per course. */
+  --signal-ink: #ffffff;
+  --signal-on-panel: #8fb4f2;
+  --link: #2a5b8f;
+  --focus: #2f6fd6;
+  --hazard: #d8332a;          /* the unverified flag: keep it red in every identity */
+  --hazard-bg: #fff6f4;
+  --ok: #2f8f5b;
+  --board: #2a2d30;
+  --board-ink: #dfe2de;
+  --board-mute: #8e9397;
+  --tile: #17191c;
+  --tile-ink: #cfd2cd;
+  --measure: 66ch;
+
+  /* figure tokens, read by kit.js and figures.js; each room overrides them */
+  --f-bg: #f4f5f2;
+  --f-ink: var(--ink);
+  --f-ctl: #ffffff;
+  --f-ctl-line: #6b7176;
+  --f-text: #25292c;
+  --f-mute: #8a9095;
+  --f-lit: var(--signal);
+  --f-lit-text: #ffffff;
+  --f-alt: #8a5bd6;
+  --f-alt-text: #ffffff;
+}
+
+/* ---------- the learner's two rooms (keys = COURSE.rooms; rename both here and there) ---------- */
+.ex.lab { background: #ffffff; border: 1.5px solid var(--ink-soft); --win-label: "[[Room one]] ends when: "; }
+.ex.lab .frame { color: var(--link); }
+.ex.stage {
+  background: var(--panel); color: var(--panel-ink); border: 1.5px solid #000; --win-label: "[[Room two]] ends when: ";
+  --ink-soft: #b9bdb8; --link: var(--signal-on-panel);
+  --f-bg: #262a2e; --f-ink: #eef0ec; --f-ctl: #30353a; --f-ctl-line: #5d646a; --f-text: #d7dad6;
+}
+.ex.stage .frame { color: var(--signal-on-panel); }
+.ex.stage .check { background: transparent; color: #ff8d85; border-color: #ff8d85; }
+.frames .lab { background: #ffffff; border: 1.5px solid var(--ink-soft); }
+.frames .stage { background: var(--panel); color: var(--panel-ink); }
+
+/* ---------- the subject's own vocabulary ---------- */
+kbd { font-family: inherit; font-weight: 700; font-size: .86em; background: var(--panel); color: var(--panel-ink); border-radius: 3px; padding: .08em .4em .1em; white-space: nowrap; }
+.ex.stage kbd { background: var(--panel-ink); color: var(--panel); }

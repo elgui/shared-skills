@@ -1,0 +1,104 @@
+/* Lightboard — scroll blocks: walkthrough, compare, flows, actor states.
+ * RUNTIME FILE: copied verbatim into a course's assets/. Grammar: Techniques.md.
+ *
+ * Without JavaScript, and in flat mode, a walkthrough is an ordinary figure followed by an
+ * ordinary numbered list. Pinning, the active-step mark and the step spacing exist only while
+ * stepping (html.js and .walk:not(.flat)).
+ */
+
+/* ---------------------------------------------------------------- walkthrough */
+.walk { margin: 1.6rem 0 2rem; max-width: none; }
+.walk-bar { display: flex; justify-content: flex-end; margin: 0 0 .4rem; }
+.walk-mode {
+  font: inherit; font-size: .82rem; font-weight: 650; cursor: pointer; border-radius: 99px; padding: .2rem .7rem;
+  background: transparent; color: var(--ink-soft, #4a4f52); border: 1.5px solid var(--rule, #c3c6c2);
+}
+.walk-mode:hover { border-color: var(--ink-soft, #4a4f52); color: var(--ink, #17191b); }
+.walk-fig { margin: 0 0 1rem; max-width: 46rem; }
+.walk-steps { list-style: none; padding: 0; margin: 0; counter-reset: walk; max-width: var(--measure, 66ch); }
+.walk-steps > li { counter-increment: walk; position: relative; padding: .2rem 0 .2rem 2.6rem; margin: 0 0 1rem; }
+.walk-steps > li::before {
+  content: counter(walk); position: absolute; left: 0; top: .15rem; width: 1.8rem; height: 1.8rem; border-radius: 50%;
+  display: grid; place-items: center; font-weight: 800; font-size: .95rem; line-height: 1;
+  border: 2px solid var(--ink, #17191b); color: var(--ink, #17191b); background: var(--page, #eceeec);
+}
+.walk-steps h3 { margin: .15rem 0 .3rem; }
+.walk-steps p { margin: .3rem 0; }
+
+/* stepping mode: the figure is pinned, each step gets room to be read against it */
+/* spacing is padding, not min-height, so the active-step rule can stop where the text stops */
+.js .walk:not(.flat) .walk-steps > li { margin: 0; padding-bottom: var(--step-gap, 34vh); transition: color .3s ease; }
+.js .walk:not(.flat) .walk-steps > li:last-child { padding-bottom: var(--walk-tail, 26vh); }
+.js .walk:not(.flat) .walk-steps > li:not(.is-on) { color: var(--ink-soft, #4a4f52); }
+.js .walk:not(.flat) .walk-steps > li.is-on::before, .js .walk:not(.flat) .walk-steps > li.is-past::before {
+  background: var(--ink, #17191b); color: var(--page, #eceeec);
+}
+.js .walk:not(.flat) .walk-steps > li.is-on:last-child::after { bottom: calc(var(--walk-tail, 26vh) + .2rem); }
+.js .walk:not(.flat) .walk-steps > li.is-on::before { background: var(--signal, #2a62c9); border-color: var(--signal, #2a62c9); color: var(--signal-ink, #fff); }
+.js .walk:not(.flat) .walk-steps > li.is-on::after {  /* a rule down the active step: which text the figure answers to */
+  content: ""; position: absolute; left: .82rem; top: 2.2rem; bottom: calc(var(--step-gap, 34vh) + .2rem); width: 3px; border-radius: 2px; background: var(--signal, #2a62c9);
+}
+
+@media (min-width: 860px) {
+  .js .walk:not(.flat) { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); grid-template-areas: "bar bar" "steps fig"; column-gap: 2rem; }
+  .js .walk:not(.flat) .walk-bar { grid-area: bar; }
+  .js .walk:not(.flat) .walk-steps { grid-area: steps; padding-top: 12vh; }
+  .js .walk:not(.flat) .walk-fig {
+    grid-area: fig; align-self: start; position: sticky; top: calc(var(--rail-h, 0px) + 16px); margin: 0;
+    max-height: calc(100vh - var(--rail-h, 0px) - 32px); overflow: hidden;
+  }
+  .js .walk:not(.flat) .walk-fig svg { max-height: var(--walk-fig-h-wide, calc(100vh - var(--rail-h, 0px) - 120px)); width: auto; max-width: 100%; margin: 0 auto; }
+}
+@media (max-width: 859.98px) {
+  /* phone: figure pinned under the rail, capped so the step text has the lower half */
+  .js .walk:not(.flat) .walk-fig {
+    position: sticky; top: var(--rail-h, 0px); z-index: 5; background: var(--page, #eceeec);
+    margin: 0 -16px .6rem; padding: .4rem 16px .5rem; box-shadow: 0 8px 12px -10px rgba(0, 0, 0, .35);
+  }
+  .js .walk:not(.flat) .walk-fig svg { max-height: var(--walk-fig-h, 40svh); width: auto; max-width: 100%; margin: 0 auto; }
+  .js .walk:not(.flat) { --step-gap: 26svh; --walk-tail: 20svh; }
+}
+/* the figcaption describes the figure AT REST (flat mode, print, no JS). While stepping, the
+   active step is the caption, and a rest caption would describe a picture not on screen. */
+.js .walk:not(.flat) .walk-fig figcaption { display: none; }
+.walk-fig.cs-swap svg { animation: cs-swap .32s ease-out 1; }
+@keyframes cs-swap { from { opacity: .45; } to { opacity: 1; } }
+
+/* ---------------------------------------------------------------- compare */
+.compare { display: inline-flex; flex-wrap: wrap; gap: 0; border: 1.5px solid var(--rule, #c3c6c2); border-radius: 99px; padding: 3px; margin: .4rem 0 .6rem; }
+.compare button { font: inherit; font-size: .88rem; font-weight: 650; border: 0; background: transparent; color: var(--ink-soft, #4a4f52); padding: .35rem .8rem; border-radius: 99px; cursor: pointer; }
+.compare button[aria-pressed="true"] { background: var(--ink, #17191b); color: var(--page, #eceeec); }
+html:not(.js) .compare { display: none; }
+html:not(.js) .cs-when-alt { display: none; }
+
+/* ---------------------------------------------------------------- raw SVG actor states */
+.js .walk-fig [data-in], .js .walk-fig [data-out], .js .walk-fig [data-at], .js .walk-fig [data-on], .js [data-when] {
+  transition: opacity .45s ease, fill .5s ease, stroke .5s ease, transform .5s ease;
+}
+svg [data-in], svg [data-out], svg [data-at], svg [data-on], svg [data-when] { transform-box: fill-box; transform-origin: center; }
+.cs-hidden { opacity: 0 !important; pointer-events: none; }
+.cs-ghosted { opacity: .18 !important; }
+html:not(.js) .walk-fig [data-out] { display: none; }   /* without JS a walkthrough figure shows its final beat */
+.js [data-draw] { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset .8s ease-out, opacity .45s ease; }
+.js [data-draw].cs-drawn { stroke-dashoffset: 0; }
+/* classes for hand-drawn SVG figures, so they theme per room like components do (--f-* tokens).
+   data-at swaps them per beat: <rect class="f-box" data-at="3:f-lit">. Later rules win. */
+svg .f-bg { fill: var(--f-bg, #f4f5f2); }
+svg .f-box { fill: var(--f-ctl, #fff); stroke: var(--f-ctl-line, #6b7176); stroke-width: 1.4; }
+svg .f-line { fill: none; stroke: var(--f-ink, #17191b); stroke-width: 1.6; }
+svg .f-dash { fill: none; stroke: var(--f-ink, #17191b); stroke-width: 1.4; stroke-dasharray: 5 4; }
+svg .f-label { fill: var(--f-ink, #17191b); font-size: 11px; font-weight: 650; }
+svg .f-small { fill: var(--f-mute, #8a9095); font-size: 9.5px; font-weight: 500; }
+svg .f-lit { fill: var(--f-lit, #2f6fd6); stroke: var(--f-ink, #17191b); }
+svg .f-alt { fill: var(--f-alt, #8a5bd6); stroke: var(--f-ink, #17191b); }
+svg .f-hazard { stroke: var(--hazard, #d8332a); }
+svg .f-label.on-lit { fill: var(--f-lit-text, #fff); }
+svg .is-dim { opacity: .28; }
+svg .flowline { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+svg .cs-tokens { pointer-events: none; }
+
+@media (prefers-reduced-motion: reduce) { /* the figcaption describes the figure AT REST (flat mode, print, no JS). While stepping, the
+   active step is the caption, and a rest caption would describe a picture not on screen. */
+.js .walk:not(.flat) .walk-fig figcaption { display: none; }
+.walk-fig.cs-swap svg { animation: none; } }
+@media print { .walk-bar, .compare { display: none; } .walk-fig { position: static !important; } }

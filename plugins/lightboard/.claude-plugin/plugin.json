@@ -1,0 +1,13 @@
+{
+  "name": "lightboard",
+  "version": "1.0.0",
+  "description": "Build a hands-on, scroll-driven HTML course for one learner on their own gear, tool or craft: a landing board whose lessons light up as exercises get done, figures that build step by step as you scroll, sourced and fact-checked claims, offline and phone-sized.",
+  "author": {
+    "name": "Guillaume (elgui)",
+    "url": "https://github.com/elgui"
+  },
+  "homepage": "https://github.com/elgui/shared-skills/tree/main/plugins/lightboard",
+  "repository": "https://github.com/elgui/shared-skills",
+  "license": "MIT",
+  "keywords": ["course", "teaching", "tutorial", "learning", "scrollytelling", "html"]
+}

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Lesson 2, Rooms and encores — Course patterns</title>
+<script>document.documentElement.classList.add("js")</script>
+<link rel="stylesheet" href="assets/course.css">
+<link rel="stylesheet" href="assets/scroll.css">
+<link rel="stylesheet" href="assets/identity.css">
+<script src="assets/course-data.js" defer></script>
+<script src="assets/kit.js" defer></script>
+<script src="assets/figures.js" defer></script>
+<script src="assets/course.js" defer></script>
+<script src="assets/scroll.js" defer></script>
+</head>
+<body>
+<main class="wrap">
+
+<div class="lesson-head"><div class="num">2</div><h1>Rooms and encores</h1>
+<p class="sub">What every exercise carries, how honesty shows on the page, and why each lesson ends on a game.</p></div>
+
+<p class="idea">Every exercise lives in one of the learner's two rooms and ends with something you can point at. The lesson ends with a game, played rather than prepared.</p>
+
+<h2>What an exercise carries</h2>
+<ul class="chain">
+  <li>a room</li><li>honest minutes</li><li>numbered steps</li><li>a success you can observe</li>
+</ul>
+<p>The room is the learner's own frame, named by them at intake. In this demo the rooms are <strong>Draft</strong>, which ends with something written, and <strong>Try</strong>, which ends with something seen. The runtime tags each exercise and adds a done box; ticking every box in a lesson lights its tile on the board. <a class="src" data-k="cs-doctrine"></a></p>
+<figure class="narrow">
+  <cs-keys keys="Room|Minutes|Steps|Success" cols="2" order="1 2 3 4"></cs-keys>
+  <figcaption>The order a learner reads an exercise in: room, minutes, steps, then the success condition. Write it in another order: the success line first, as the exercise below makes you do.</figcaption>
+</figure>
+
+<h2>Honesty on the page</h2>
+<p>Every operational claim links its source. A claim that no source confirms keeps a visible flag, like this one: <span class="check">example flag: check it yourself</span>. The check tool counts flags per page and fails when one disappears without a recorded reason. <a class="src" data-k="cs-doctrine"></a></p>
+<p>Reminders live in dotted words, like <span class="tip" data-g="encore">encore</span>. They remind an expert; they never teach the basics.</p>
+
+<h2>Encores that work</h2>
+<div class="scroll"><table>
+<tr><th>Shape</th><th>What it forces</th><th>Widget</th></tr>
+<tr><td>Dare drawer</td><td>a constraint you did not choose</td><td><code>.dare</code></td></tr>
+<tr><td>Roulette</td><td>meeting what you would never pick</td><td><code>.dare</code> or a physical die</td></tr>
+<tr><td>Timed rounds</td><td>deciding by ear or eye, fast</td><td><code>.timer</code></td></tr>
+<tr><td>One-thing-only</td><td>depth from a single resource</td><td>none</td></tr>
+<tr><td>Blind A/B</td><td>trusting perception over the screen</td><td>none</td></tr>
+</table></div>
+<p>More shapes and the rules for writing one are in the doctrine. <a class="src" data-k="cs-doctrine"></a></p>
+
+<section class="ex draft" data-min="10">
+<h3>Write the success first</h3>
+<ol>
+  <li>Take an exercise you would give a learner. Write only its success condition, as something a person could see or hear.</li>
+  <li>Now write the steps that lead there, and cut any step the success condition does not need.</li>
+</ol>
+<p class="win">the success line names something observable, and every step serves it.</p>
+</section>
+
+<section class="ex try encore" data-min="6" data-kind="three rounds">
+<h3>Two-minute lesson</h3>
+<ol>
+  <li>Start the timer. In two minutes, sketch one lesson on paper: its idea, one figure, one game.</li>
+  <li>When time runs out, stop mid-line. Next round, a new subject. Three rounds.</li>
+</ol>
+<div class="timer" data-sec="120" data-rounds="3"></div>
+<p class="win">three sketches, each with one idea, one figure and one game, and one you would actually build.</p>
+</section>
+
+<section class="checkpoint">
+<h2>Before you build a course</h2>
+<ul>
+  <li>You write the success condition before the steps.</li>
+  <li>You flag what no source confirms, and leave the flag.</li>
+  <li>You end every lesson on something played.</li>
+</ul>
+</section>
+
+</main>
+</body>
+</html>

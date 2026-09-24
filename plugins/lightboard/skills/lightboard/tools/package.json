@@ -1,0 +1,9 @@
+{
+  "name": "lightboard-tools",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "dependencies": {
+    "playwright-core": "^1.62.1"
+  }
+}

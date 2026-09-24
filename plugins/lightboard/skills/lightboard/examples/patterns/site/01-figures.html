@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Lesson 1, Figures that move — Course patterns</title>
+<script>document.documentElement.classList.add("js")</script>
+<link rel="stylesheet" href="assets/course.css">
+<link rel="stylesheet" href="assets/scroll.css">
+<link rel="stylesheet" href="assets/identity.css">
+<script src="assets/course-data.js" defer></script>
+<script src="assets/kit.js" defer></script>
+<script src="assets/figures.js" defer></script>
+<script src="assets/course.js" defer></script>
+<script src="assets/scroll.js" defer></script>
+</head>
+<body>
+<main class="wrap">
+
+<div class="lesson-head"><div class="num">1</div><h1>Figures that move</h1>
+<p class="sub">The three blocks that move, when each one earns its place, and what a reader who does not scroll smoothly still gets.</p></div>
+
+<p class="idea">A figure moves only when the idea has an order. Then it holds still beside the words, and each step you scroll changes one thing in it, which the step names.</p>
+
+<h2>A walkthrough over a drawing</h2>
+<p>The figure below is a kit component. The walkthrough steps it by changing one attribute per step; nothing is redrawn by hand. It is also the order in which a course gets made. <a class="src" data-k="cs-doctrine"></a></p>
+<section class="walk" id="pipeline" aria-label="How a course gets made, step by step">
+  <figure class="walk-fig">
+    <cs-chain items="Intake|Research|Plan|Build|Fact-check|Publish" cols="3" data-set="1: lit=1; 2: lit=2; 3: lit=3; 4: lit=4; 5: lit=5; 6: lit=6"></cs-chain>
+    <figcaption>Six stages, in order: intake, research, plan, build, fact-check, and an optional publish. Build does not start before the plan is agreed. <a class="src" data-k="cs-doctrine"></a></figcaption>
+  </figure>
+  <ol class="walk-steps">
+    <li><h3>Intake</h3><p><strong>Intake</strong>, first box: the learner's expertise, their gear and versions, their own names for their two <span class="tip" data-g="room">rooms</span>, and their own notes to fold in. Deduced where possible, asked where not.</p></li>
+    <li><h3>Research</h3><p><strong>Research</strong>: one sourced note per topic, every claim with a page reference, and a list of what could not be confirmed. That list becomes the red flags.</p></li>
+    <li><h3>Plan</h3><p><strong>Plan</strong>: one idea per lesson, its figures, at most two walkthroughs, the exercises by room, and the encore. The learner reads it before any page exists.</p></li>
+    <li><h3>Build</h3><p><strong>Build</strong>, first box of the second row: identity, course data, drawings, then the lessons. The check runs every beat of every walkthrough at phone and desktop sizes.</p></li>
+    <li><h3>Fact-check</h3><p><strong>Fact-check</strong>: readers who did not write the pages check every operational claim against the research. Wrong claims are fixed, unconfirmed ones are flagged, and no flag is ever removed.</p></li>
+    <li><h3>Publish</h3><p><strong>Publish</strong>, last box, is optional: behind a login, never an open link, and only when the learner says yes.</p></li>
+  </ol>
+</section>
+
+<h2>One step, one change</h2>
+<p>How the stepping works, drawn with hand-made SVG instead of a component. On a phone the figure pins under the rail and the steps pass beneath it.</p>
+<section class="walk" id="switch" aria-label="How a step takes over, on a phone">
+  <figure class="walk-fig">
+    <svg viewBox="0 0 320 236" role="img" aria-label="A phone: the rail at the top, the pinned figure under it, a dashed switch line lower down, and a step card that has crossed the line, which changed the figure.">
+      <rect class="f-bg" x="0" y="0" width="320" height="236" rx="6"/>
+      <rect class="f-line" x="20" y="8" width="122" height="220" rx="14"/>
+      <rect class="f-box" x="30" y="20" width="102" height="14" rx="3"/>
+      <text class="f-small" x="152" y="31">the rail</text>
+      <rect class="f-box f-lit" x="30" y="42" width="102" height="60" rx="4" data-in="1" data-at="3:f-lit"/>
+      <text class="f-label" x="152" y="76" data-in="1">pinned figure</text>
+      <text class="f-small" x="152" y="92" data-in="3">changed by step 1</text>
+      <path class="f-dash" d="M24 146 H138" data-in="2"/>
+      <text class="f-label" x="152" y="150" data-in="2">switch line</text>
+      <rect class="f-box" x="40" y="166" width="82" height="40" rx="4" data-out="3"/>
+      <text class="f-small" x="81" y="190" text-anchor="middle" data-out="3">step 1</text>
+      <rect class="f-box" x="40" y="112" width="82" height="28" rx="4" data-in="3"/>
+      <text class="f-small" x="81" y="130" text-anchor="middle" data-in="3">step 1</text>
+      <text class="f-small" x="152" y="196" data-out="3">steps scroll up</text>
+    </svg>
+    <figcaption>A phone with the rail at the top, the pinned figure under it and the dashed switch line lower down. A step card that crosses the line changes the figure. <a class="src" data-k="cs-tech"></a></figcaption>
+  </figure>
+  <ol class="walk-steps">
+    <li><h3>The figure pins</h3><p>The <strong>pinned figure</strong> box sticks under the rail and keeps the same size at every <span class="tip" data-g="beat">beat</span>, so the text under it never jumps.</p></li>
+    <li><h3>A switch line sits under it</h3><p>The dashed <strong>switch line</strong> sits a third of the way into the space left below the figure. On a wide screen it sits beside the figure instead. <a class="src" data-k="cs-tech"></a></p></li>
+    <li><h3>A step crosses it</h3><p>When the <strong>step 1</strong> card crosses the line, the pinned figure changes. Scrolling back up undoes it: the picture depends only on which step is active. <a class="src" data-k="cs-tech"></a></p></li>
+  </ol>
+</section>
+
+<h2>Two states of one thing</h2>
+<p>A compare flips one figure between named states when the reader clicks. It never flips by itself. Here the two states are the two ways to read a walkthrough; the chevrons in the first state are a flow, moving only while the figure is on screen. <a class="src" data-k="cs-tech"></a></p>
+<div class="compare" data-for="modes" role="group" aria-label="Compare the two reading modes">
+  <button data-state="step" aria-pressed="true">Step through</button>
+  <button data-state="flat">Show all steps</button>
+</div>
+<figure id="modes">
+  <svg viewBox="0 0 320 170" role="img" aria-label="Stepping: the figure is pinned beside the steps and the page scrolls past it. Flat: the figure at rest above a plain list of steps.">
+    <rect class="f-bg" x="0" y="0" width="320" height="170" rx="6"/>
+    <g data-when="step">
+      <rect class="f-box" x="16" y="18" width="120" height="26" rx="3"/><rect class="f-lit" x="16" y="64" width="120" height="26" rx="3"/><rect class="f-box" x="16" y="110" width="120" height="26" rx="3"/>
+      <text class="f-label on-lit" x="76" y="81" text-anchor="middle">active step</text>
+      <rect class="f-box" x="160" y="18" width="144" height="118" rx="4"/>
+      <text class="f-label" x="232" y="82" text-anchor="middle">pinned figure</text>
+      <path class="flowline" d="M150 150 V14" stroke="var(--f-ink)" stroke-opacity=".3" stroke-width="2" data-flow="n:4; speed:40"/>
+      <text class="f-small" x="16" y="160">the page scrolls, the figure stays</text>
+    </g>
+    <g data-when="flat" class="cs-when-alt">
+      <rect class="f-box" x="16" y="14" width="288" height="70" rx="4"/>
+      <text class="f-label" x="160" y="53" text-anchor="middle">figure at rest</text>
+      <rect class="f-box" x="16" y="96" width="288" height="16" rx="3"/><rect class="f-box" x="16" y="118" width="288" height="16" rx="3"/><rect class="f-box" x="16" y="140" width="288" height="16" rx="3"/>
+    </g>
+  </svg>
+  <figcaption>Stepping: the page scrolls past a pinned figure and one step is active. Flat: the figure at rest above an ordinary list. Flat is the default under reduced motion. <a class="src" data-k="cs-tech"></a></figcaption>
+</figure>
+<p>Why the reader sets the pace: learning improves when material is segmented and learners control the pace, and when cues signal how it is organised. <a class="src" data-k="mayer-seg"></a> Why most of a lesson stays still: extraneous material costs comprehension. <a class="src" data-k="mayer-coh"></a></p>
+
+<h2>The example band</h2>
+<figure class="narrow">
+  <demo-dial value="7" max="10" lit="1" example="a demo component, not a real control"></demo-dial>
+  <figcaption>Any drawing of a setup that is not the learner's own carries an EXAMPLE band, drawn by the kit from one attribute. Here, the demo dial from the template's figures.js, lit, at 7 of 10.</figcaption>
+</figure>
+
+<section class="ex draft" data-min="10">
+<h3>Write a beat table</h3>
+<ol>
+  <li>Pick one move from a subject you know that has a real order: three to six steps.</li>
+  <li>In a plan file, write the table: beat, step headline, what changes in the figure. Beat 0 is before the first step.</li>
+  <li>Strike any beat that changes two things, and any step that names its change only as "the highlighted one".</li>
+</ol>
+<p class="win">every beat changes one thing, and every step names what changed by its label in the drawing.</p>
+</section>
+
+<section class="ex try" data-min="5">
+<h3>Read it two ways</h3>
+<ol>
+  <li>Open this lesson on a phone. Scroll the pipeline walkthrough slowly and watch the boxes light.</li>
+  <li>Press <strong>Show all steps</strong> and find the Fact-check step again.</li>
+</ol>
+<p class="win">the same six stages reach you both ways, and in flat mode you find Fact-check without scrolling through the other steps one by one.</p>
+</section>
+
+<section class="ex try encore" data-min="5" data-kind="motion or not">
+<h3>Motion or not</h3>
+<p>A fast sorting game for the one decision this lesson is about.</p>
+<ol>
+  <li>Press <strong>Draw</strong>. Decide in five seconds: static figure, walkthrough, compare or flow.</li>
+  <li>Say why out loud in one sentence. Draw again. Three rounds.</li>
+</ol>
+<div class="dare" data-list='["How to hold a chord shape","The order of a pre-flight checklist","Where the signal goes after the mixer","Twelve effects and what each is for","A dough before and after resting","Which fret each note of a scale is on","The four stages of a print run","Tape delay with and without wow","Where a request waits in a queue","A list of the gear you need"]'>
+  <output>Press the button.</output>
+  <button type="button">Draw</button>
+</div>
+<p class="win">three calls you can defend, and at least one that is a static figure.</p>
+</section>
+
+<section class="checkpoint">
+<h2>Before lesson 2</h2>
+<ul>
+  <li>You can tell an idea with an order from a list.</li>
+  <li>You can write a beat table where each beat changes one thing.</li>
+  <li>You know what a reader in flat mode sees.</li>
+</ul>
+</section>
+
+</main>
+</body>
+</html>

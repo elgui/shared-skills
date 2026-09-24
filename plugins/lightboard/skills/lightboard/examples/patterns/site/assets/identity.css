@@ -1,0 +1,87 @@
+/* Course patterns — identity. Subject: making teaching pages, a craft done at a workbench.
+   Derived from the maker's bench: Draft = a sheet of tracing vellum with a faint blue grid;
+   Try = the green self-healing cutting mat with its yellow rulings. The signal is the mat's
+   yellow. Same face as the SP-404 course (Archivo), turned the other way: condensed display
+   instead of expanded, to show that a face is not an identity. */
+
+@font-face {
+  font-family: "Archivo";
+  src: url("fonts/archivo.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-display: swap;
+}
+
+:root {
+  --font: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --page: #e4e8e5;
+  --ink: #0f2620;
+  --ink-soft: #3f5550;
+  --rule: #bfc9c4;
+  --panel: #174a3c;           /* cutting mat */
+  --panel-ink: #eef4ef;
+  --signal: #f0c02f;          /* the mat's ruling yellow */
+  --signal-ink: #1e1a05;
+  --signal-on-panel: #f0c02f;
+  --link: #22607f;
+  --focus: #22607f;
+  --hazard: #d8332a;
+  --hazard-bg: #fff5f3;
+  --ok: #2f8f5b;
+  --board: #174a3c;
+  --board-ink: #e3eee7;
+  --board-mute: #9dbdb0;
+  --tile: #0f382d;
+  --tile-ink: #e3eee7;
+  --measure: 64ch;
+  --mat-line: rgba(240, 192, 47, .22);
+  --vellum: #fbfcfa;
+  --vellum-line: #d6e3ea;
+
+  --f-bg: #f2f5f3;
+  --f-ink: var(--ink);
+  --f-ctl: #ffffff;
+  --f-ctl-line: #5b716b;
+  --f-text: #173029;
+  --f-mute: #6f837d;
+  --f-lit: var(--signal);
+  --f-lit-text: #1e1a05;
+  --f-alt: #22607f;
+  --f-alt-text: #ffffff;
+}
+
+/* condensed display, regular text */
+h1 { font-stretch: 70%; font-weight: 800; letter-spacing: -.01em; }
+.hero h1 { font-stretch: 62%; font-weight: 850; letter-spacing: -.02em; }
+h2 { font-stretch: 80%; font-weight: 800; font-size: 1.7rem; }
+.mast-in, .ex-meta, .rail-sec, .bank-label, .walk-mode, figcaption, .foot { font-stretch: 85%; }
+.lesson-head .num, .rail-num, .tile .n, .encore-tag, .ex-meta .frame { font-stretch: 70%; }
+.idea { border-left-color: var(--signal); border-left-width: 8px; }
+
+/* Draft: tracing vellum */
+.ex.draft, .frames .draft {
+  background-color: var(--vellum); color: var(--ink); border: 1.5px solid var(--link);
+  background-image: linear-gradient(var(--vellum-line) 1px, transparent 1px), linear-gradient(90deg, var(--vellum-line) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.ex.draft { --win-label: "Done when: "; }
+.ex.draft .frame, .frames .draft h2 { color: var(--link); }
+
+/* Try: the cutting mat */
+.ex.try, .frames .try {
+  background-color: var(--panel); color: var(--panel-ink); border: 1.5px solid #0b2a21;
+  background-image: linear-gradient(var(--mat-line) 1px, transparent 1px), linear-gradient(90deg, var(--mat-line) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.ex.try {
+  --win-label: "You will see it when: ";
+  --ink-soft: #b8d0c6; --link: #9fd3ea;
+  --f-bg: #1d5646; --f-ink: #eef4ef; --f-ctl: #245f4e; --f-ctl-line: #7fa597; --f-text: #e3eee7; --f-mute: #9dbdb0;
+}
+.ex.try .frame, .frames .try h2 { color: var(--signal); }
+.ex.try .check { background: transparent; color: #ff9a90; border-color: #ff9a90; }
+.ex.encore { box-shadow: 0 0 0 3px var(--signal); }
+
+.tile { box-shadow: inset 0 0 0 1px rgba(240, 192, 47, .25); }
+kbd { font-family: inherit; font-stretch: 85%; font-weight: 700; font-size: .86em; background: var(--ink); color: var(--page); border-radius: 3px; padding: .08em .4em .1em; white-space: nowrap; }
+.ex.try kbd { background: var(--panel-ink); color: var(--panel); }

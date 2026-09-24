@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="{{LANG}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>{{UNIT}} 1, [[Lesson title]] — {{TITLE}}</title>
+<script>document.documentElement.classList.add("js")</script>
+<link rel="stylesheet" href="assets/course.css">
+<link rel="stylesheet" href="assets/scroll.css">
+<link rel="stylesheet" href="assets/identity.css">
+<script src="assets/course-data.js" defer></script>
+<script src="assets/kit.js" defer></script>
+<script src="assets/figures.js" defer></script>
+<script src="assets/course.js" defer></script>
+<script src="assets/scroll.js" defer></script>
+</head>
+<body>
+<main class="wrap">
+
+<div class="lesson-head"><div class="num">1</div><h1>[[Lesson title]]</h1>
+<p class="sub">[[One sentence: what this lesson gives the learner's hands.]]</p></div>
+
+<!-- RULE: one loud .idea per lesson: the mental model that makes the rest obvious. Not a summary, not a lecture on basics. -->
+<p class="idea">[[The idea, in two or three sentences, in the learner's words.]]</p>
+
+<h2>[[First section]]</h2>
+<!-- RULE: most figures are static. Every highlighted element is named in the caption. Every operational claim links a source; unconfirmed ones get a .check flag that is never removed. -->
+<figure>
+  <cs-keys keys="[[A]]|[[B]]|[[C]]|[[D]]" lit="2"></cs-keys>
+  <figcaption>[[What the drawing shows; name the lit control.]] <a class="src" data-k="manual"></a></figcaption>
+</figure>
+<p>[[Prose. Reminders go in tooltips: <span class="tip" data-g="example">a term</span>.]] <span class="check">[[a claim no source confirms: check it yourself]]</span></p>
+
+<h2>[[A move with an order]]</h2>
+<!-- RULE: a walkthrough only when the idea has ORDER and the reader must compare states of ONE figure. 2 to 8 steps, each changes one thing in the figure and names it by its label (never only "the lit one": flat mode shows the figure at rest). The component's authored attributes are the rest state; data-set gives each beat. Budget: one or two per lesson. -->
+<section class="walk" id="move" aria-label="[[The move, step by step]]">
+  <figure class="walk-fig">
+    <cs-keys keys="[[A]]|[[B]]|[[C]]|[[D]]" order="1 3" data-set="0: order=, hold=; 1: hold=1, order=; 2: hold=1, order=3"></cs-keys>
+    <figcaption>[[The move at rest, as one sentence; no fact that the steps do not also carry.]] <a class="src" data-k="manual"></a></figcaption>
+  </figure>
+  <ol class="walk-steps">
+    <li><h3>[[Hold A]]</h3><p>[[What to do, and what the ring on A means.]] <a class="src" data-k="manual"></a></p></li>
+    <li><h3>[[Then press C]]</h3><p>[[What happens, and how the learner will know.]]</p></li>
+  </ol>
+</section>
+
+<!-- RULE: exercises. Class = one of COURSE.rooms (the learner's own names). data-min = honest minutes. .win = the concrete, observable success condition. -->
+<section class="ex lab" data-min="10">
+<h3>[[Exercise that ends with something prepared]]</h3>
+<ol>
+  <li>[[Step]]</li>
+  <li>[[Step]]</li>
+</ol>
+<p class="win">[[what exists, saved, when it worked]]</p>
+</section>
+
+<section class="ex stage" data-min="10" data-kind="[[optional: the move's name]]">
+<h3>[[Exercise that ends with something performed]]</h3>
+<ol>
+  <li>[[Step]]</li>
+</ol>
+<p class="win">[[what the learner will hear, see or feel when it worked]]</p>
+</section>
+
+<!-- RULE: every lesson ends with ONE .encore: short, a game, played not prepared. A constraint, a roulette, a timer, a dare (Doctrine §5). -->
+<section class="ex stage encore" data-min="5" data-kind="[[the game's name]]">
+<h3>[[Encore title]]</h3>
+<ol>
+  <li>[[The rule of the game]]</li>
+</ol>
+<div class="timer" data-sec="120" data-rounds="3"></div>
+<p class="win">[[the observable result of playing it]]</p>
+</section>
+
+<section class="checkpoint">
+<h2>Before {{UNIT}} 2</h2>
+<ul>
+  <li>[[A capability the learner now has, stated as something they can do]]</li>
+</ul>
+</section>
+
+</main>
+</body>
+</html>
