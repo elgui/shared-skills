@@ -1,0 +1,125 @@
+{
+  "$defs": {
+    "ProfileDimension": {
+      "additionalProperties": false,
+      "properties": {
+        "depth": {
+          "default": "standard",
+          "enum": [
+            "surface",
+            "standard",
+            "deep"
+          ],
+          "title": "Depth",
+          "type": "string"
+        },
+        "description": {
+          "default": "",
+          "maxLength": 600,
+          "title": "Description",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "ProfileDimension",
+      "type": "object"
+    }
+  },
+  "$id": "https://tele-claude.gbconsult.me/api/studio/profile-schema",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "An interview profile kept in a collaborator's repo. Questions and tone; no personal data.",
+  "properties": {
+    "dimensions": {
+      "items": {
+        "$ref": "#/$defs/ProfileDimension"
+      },
+      "maxItems": 12,
+      "title": "Dimensions",
+      "type": "array"
+    },
+    "kind": {
+      "const": "studio-profile",
+      "default": "studio-profile",
+      "title": "Kind",
+      "type": "string"
+    },
+    "language": {
+      "default": "en",
+      "enum": [
+        "en",
+        "fr",
+        "de",
+        "es",
+        "it",
+        "pt",
+        "nl"
+      ],
+      "title": "Language",
+      "type": "string"
+    },
+    "name": {
+      "maxLength": 120,
+      "minLength": 1,
+      "title": "Name",
+      "type": "string"
+    },
+    "purpose": {
+      "maxLength": 1000,
+      "minLength": 1,
+      "title": "Purpose",
+      "type": "string"
+    },
+    "respondent_briefing": {
+      "default": "",
+      "maxLength": 1000,
+      "title": "Respondent Briefing",
+      "type": "string"
+    },
+    "soul_preset": {
+      "anyOf": [
+        {
+          "enum": [
+            "demonstrator",
+            "focused-consultant",
+            "smart-colleague",
+            "ticket-clarifier",
+            "warm-psychologist"
+          ],
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Soul Preset"
+    },
+    "tone": {
+      "default": "",
+      "maxLength": 2000,
+      "title": "Tone",
+      "type": "string"
+    },
+    "version": {
+      "const": 1,
+      "default": 1,
+      "title": "Version",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "name",
+    "purpose"
+  ],
+  "title": "StudioProfile",
+  "type": "object"
+}

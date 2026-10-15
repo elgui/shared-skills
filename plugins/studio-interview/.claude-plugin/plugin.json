@@ -1,0 +1,13 @@
+{
+  "name": "studio-interview",
+  "version": "1.0.0",
+  "description": "Start a Conversation Studio interview from the repo you work in: a profile in the repo keeps the questions and the tone, the respondent answers by link, and the summary comes back to a file outside git. Needs a studio token from the server's owner.",
+  "author": {
+    "name": "Guillaume (elgui)",
+    "url": "https://github.com/elgui"
+  },
+  "homepage": "https://github.com/elgui/shared-skills/tree/main/plugins/studio-interview",
+  "repository": "https://github.com/elgui/shared-skills",
+  "license": "MIT",
+  "keywords": ["interview", "research", "conversation", "survey", "tele-claude"]
+}

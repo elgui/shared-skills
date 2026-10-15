@@ -7,6 +7,7 @@ add it once, then install whichever skills you want.
 ```text
 /plugin marketplace add elgui/shared-skills
 /plugin install lightboard@shared-skills
+/plugin install studio-interview@shared-skills
 ```
 
 Updates: `/plugin marketplace update shared-skills`.
@@ -14,6 +15,7 @@ Updates: `/plugin marketplace update shared-skills`.
 | Skill | What it does |
 |---|---|
 | [**lightboard**](plugins/lightboard/skills/lightboard/SKILL.md) | Builds a hands-on HTML course for one learner on their own gear, tool or craft |
+| [**studio-interview**](plugins/studio-interview/skills/studio-interview/SKILL.md) | Starts an interview on a tele-claude Conversation Studio from your repo, and brings the results back outside git |
 
 ---
 

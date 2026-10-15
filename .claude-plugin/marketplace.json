@@ -13,6 +13,12 @@
       "source": "./plugins/lightboard",
       "description": "Build a hands-on, scroll-driven HTML course for one learner on their own gear, tool or craft.",
       "category": "learning"
+    },
+    {
+      "name": "studio-interview",
+      "source": "./plugins/studio-interview",
+      "description": "Start, follow, fetch and delete Conversation Studio interviews from the repo you work in.",
+      "category": "research"
     }
   ]
 }

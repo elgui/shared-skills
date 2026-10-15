@@ -9,3 +9,5 @@ node_modules/
 *.key
 *.pem
 *secret*
+__pycache__/
+*.pyc
